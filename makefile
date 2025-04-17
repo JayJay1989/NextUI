@@ -12,7 +12,7 @@ endif
 
 ifeq (,$(PLATFORMS))
 #PLATFORMS = miyoomini trimuismart rg35xx rg35xxplus my355 tg5040 zero28 rgb30 m17 gkdpixel my282 magicmini
-PLATFORMS = tg5040
+PLATFORMS = r36s
 endif
 
 ###########################################################
@@ -20,7 +20,7 @@ endif
 BUILD_HASH:=$(shell git rev-parse --short HEAD)
 RELEASE_TIME:=$(shell TZ=GMT date +%Y%m%d)
 RELEASE_BETA=
-RELEASE_BASE=NextUI-$(RELEASE_TIME)$(RELEASE_BETA)
+RELEASE_BASE=NextUI-(Lateur.pro)-$(RELEASE_TIME)$(RELEASE_BETA)
 RELEASE_DOT:=$(shell find -E ./releases/. -regex ".*/${RELEASE_BASE}-[0-9]+-base\.zip" | wc -l | sed 's/ //g')
 RELEASE_NAME=$(RELEASE_BASE)-$(RELEASE_DOT)
 
@@ -204,4 +204,3 @@ package: tidy
 	# ----------------------------------------------------
 	# $@
 	@echo "$(PLATFORMS)" | grep -q "\b$@\b" && (make common PLATFORM=$@) || (exit 1)
-	
